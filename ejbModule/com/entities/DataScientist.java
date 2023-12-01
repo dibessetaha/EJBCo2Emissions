@@ -29,17 +29,19 @@ public class DataScientist implements Serializable {
 	
 	private String password ; 
 	
-	
-	
-	public DataScientist(String username, String password, List<Co2Emission> co2Emissions) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.co2Emissions = co2Emissions;
-	}
-
 	@OneToMany(mappedBy = "dataScientist")
     private List<Co2Emission> co2Emissions = new ArrayList<>();
+
+	public DataScientist() {
+	}
+	
+	
+	public DataScientist(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+
 
 	public String getUsername() {
 		return username;
@@ -56,4 +58,6 @@ public class DataScientist implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
 }

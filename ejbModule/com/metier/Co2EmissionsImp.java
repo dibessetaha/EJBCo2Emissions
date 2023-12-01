@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.dao.ICo2Emissions;
 import com.entities.Co2Emission;
+import com.entities.DataScientist;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 
 @Stateless
@@ -41,6 +43,14 @@ public class Co2EmissionsImp implements ICo2Emissions {
 		Co2Emission co2Emission =  getOne(id) ; 
 		co2Emission.setApprouved(true);
 		em.persist(co2Emission);  // not obligated it made automatically
+	}
+
+	@Override
+	public List<Co2Emission> getCo2EmissionsPerDs(DataScientist ds) {
+		TypedQuery<Co2Emission> query = em.createQuery("SELECT ce FROM Co2Emission ce WHERE ce.dataScientist = :dataScientist", Co2Emission.class);
+        query.setParameter("dataScientist", ds);
+
+        return query.getResultList();
 	}
 
 }
