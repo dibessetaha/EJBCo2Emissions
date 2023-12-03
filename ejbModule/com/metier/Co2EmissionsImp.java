@@ -53,4 +53,18 @@ public class Co2EmissionsImp implements ICo2Emissions {
         return query.getResultList();
 	}
 
+	@Override
+	public List<Co2Emission> getCo2EmissionsByCountry(String country) {
+		TypedQuery<Co2Emission> query = em.createQuery("SELECT ce FROM Co2Emission ce WHERE ce.country = :country", Co2Emission.class);
+        query.setParameter("country", country);
+
+        return query.getResultList();
+	}
+
+	@Override
+	public List<String> getAllCountries() {
+		  Query query = em.createQuery("SELECT DISTINCT c.country FROM Co2Emission c");
+		    return query.getResultList();
+	}
+
 }

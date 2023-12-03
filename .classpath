@@ -12,8 +12,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/dibes/Downloads/poi-5.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/dibes/Downloads/poi-ooxml-5.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/dibes/Downloads/commons-collections-3.2.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
