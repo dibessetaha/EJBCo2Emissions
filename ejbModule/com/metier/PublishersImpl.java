@@ -1,18 +1,18 @@
 package com.metier;
 
-import javax.sound.midi.Soundbank;
-
-import com.dao.IDataScientist;
-import com.entities.Co2Emission;
+import com.dao.IPublisher;
 import com.entities.DataScientist;
+import com.entities.PublisherApproval;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
+
 @Stateless
-public class DataScientistImpl implements IDataScientist {
+public class PublishersImpl implements IPublisher {
+	
 	
 	@PersistenceContext(unitName = "UP_CO2DATA" )
 	private EntityManager em ; 
@@ -21,7 +21,7 @@ public class DataScientistImpl implements IDataScientist {
 	public boolean login(String username, String password) {
 		
 		try {
-			TypedQuery<DataScientist> query = em.createQuery("SELECT d FROM DataScientist d WHERE d.user_name = :username And d.password = :password", DataScientist.class);
+			TypedQuery<PublisherApproval> query = em.createQuery("SELECT p FROM PublisherApproval p WHERE p.user_name = :username And p.password = :password", PublisherApproval.class);
 	        query.setParameter("username", username);
 	        query.setParameter("password", password);
 			System.out.println(query.getSingleResult());;

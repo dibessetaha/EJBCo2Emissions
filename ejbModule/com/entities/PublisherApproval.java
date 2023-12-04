@@ -17,7 +17,7 @@ public class PublisherApproval implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ; 
-	private String username ; 
+	private String user_name ; 
 	private String password ;
 	
 	public PublisherApproval() {
@@ -26,17 +26,17 @@ public class PublisherApproval implements Serializable {
 	
 	
 	public PublisherApproval( String username, String password) {
-		this.username = username;
+		this.user_name = username;
 		this.password = password;
 	}
 
 
 
 	public String getUsername() {
-		return username;
+		return user_name;
 	}
 	public void setUsername(String username) {
-		this.username = username;
+		this.user_name = username;
 	}
 	public String getPassword() {
 		return password;

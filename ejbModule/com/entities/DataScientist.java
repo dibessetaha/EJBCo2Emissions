@@ -25,7 +25,9 @@ public class DataScientist implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ; 
 	
-	private String username ; 
+	private String user_name ; 
+	
+	private String email ; 
 	
 	private String password ; 
 	
@@ -36,19 +38,20 @@ public class DataScientist implements Serializable {
 	}
 	
 	
-	public DataScientist(String username, String password) {
-		this.username = username;
+	public DataScientist(String username, String email, String password) {
+		this.user_name = username;
+		this.email = email ; 
 		this.password = password;
 	}
 
 
 
 	public String getUsername() {
-		return username;
+		return user_name;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.user_name = username;
 	}
 
 	public String getPassword() {
@@ -57,6 +60,16 @@ public class DataScientist implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 
