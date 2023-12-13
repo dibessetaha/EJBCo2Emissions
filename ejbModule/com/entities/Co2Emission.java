@@ -21,7 +21,7 @@ public class Co2Emission implements Serializable {
 	private String year ; 
 	private String country ;
 	private double co2EmissionKt ; 
-	private boolean approuved ; 
+	private boolean approuved = false ; 
 	
 	@ManyToOne
 	private DataScientist dataScientist ; 

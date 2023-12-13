@@ -39,9 +39,16 @@ public class Co2EmissionsImp implements ICo2Emissions {
 	}
 
 	@Override
-	public void approuverCo2Emission(Long id) {
+	public void approuveCo2Emission(Long id) {
 		Co2Emission co2Emission =  getOne(id) ; 
 		co2Emission.setApprouved(true);
+		em.persist(co2Emission);  // not obligated it made automatically
+	}
+	
+	@Override
+	public void disApprouveCo2Emission(Long id) {
+		Co2Emission co2Emission =  getOne(id) ; 
+		co2Emission.setApprouved(false);
 		em.persist(co2Emission);  // not obligated it made automatically
 	}
 
@@ -49,6 +56,14 @@ public class Co2EmissionsImp implements ICo2Emissions {
 	public List<Co2Emission> getCo2EmissionsPerDs(DataScientist ds) {
 		TypedQuery<Co2Emission> query = em.createQuery("SELECT ce FROM Co2Emission ce WHERE ce.dataScientist = :dataScientist", Co2Emission.class);
         query.setParameter("dataScientist", ds);
+
+        return query.getResultList();
+	}
+	
+	@Override
+	public List<Co2Emission> getApprouvedData() {
+		TypedQuery<Co2Emission> query = em.createQuery("SELECT c FROM Co2Emission c WHERE c.approuved = :approuved", Co2Emission.class);
+        query.setParameter("approuved", true);
 
         return query.getResultList();
 	}
