@@ -24,6 +24,8 @@ public class Co2EmissionsImp implements ICo2Emissions {
 	public void addCo2Emisson(Co2Emission co2Emission) {
 		em.persist(co2Emission);
 	}
+	
+	
 
 	@Override
 	public List<Co2Emission> getCo2Emissions() {
@@ -64,7 +66,6 @@ public class Co2EmissionsImp implements ICo2Emissions {
 	public List<Co2Emission> getApprouvedData() {
 		TypedQuery<Co2Emission> query = em.createQuery("SELECT c FROM Co2Emission c WHERE c.approuved = :approuved", Co2Emission.class);
         query.setParameter("approuved", true);
-
         return query.getResultList();
 	}
 
@@ -80,6 +81,15 @@ public class Co2EmissionsImp implements ICo2Emissions {
 	public List<String> getAllCountries() {
 		  Query query = em.createQuery("SELECT DISTINCT c.country FROM Co2Emission c");
 		    return query.getResultList();
+	}
+
+
+
+	@Override
+	public void addCo2EmissonBatch(List<Co2Emission> co2Emissions) {
+		 for (Co2Emission co2Emission : co2Emissions) {
+		        em.persist(co2Emission);
+		    }
 	}
 
 }

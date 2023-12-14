@@ -7,7 +7,8 @@ import java.util.List ;
 
 public interface ICo2Emissions {
 	
-	public void addCo2Emisson(Co2Emission co2Emission) ; 
+	public void addCo2EmissonBatch(List<Co2Emission> co2Emissions) ; 
+	public void addCo2Emisson(Co2Emission co2Emissions) ; 
 	public List<Co2Emission> getCo2Emissions() ; 
 	public List<Co2Emission> getApprouvedData() ; 
 	public List<Co2Emission> getCo2EmissionsPerDs(DataScientist ds) ; 

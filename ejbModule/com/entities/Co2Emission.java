@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,19 +19,21 @@ public class Co2Emission implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ; 
+	private String countryCode ; 
 	private String year ; 
 	private String country ;
-	private double co2EmissionKt ; 
+	private BigDecimal co2EmissionKt ; 
 	private boolean approuved = false ; 
 	
 	@ManyToOne
 	private DataScientist dataScientist ; 
 	
-	public Co2Emission(String year, String country, double co2data , boolean approuved) {
+	public Co2Emission(String year, String country, BigDecimal co2data , String countryCode ,  boolean approuved) {
 		this.year = year;
 		this.country = country;
 		this.approuved = approuved ; 
 		this.co2EmissionKt = co2data ; 
+		this.countryCode = countryCode ; 
 	}
 	
 	public Co2Emission() {}
@@ -68,12 +71,20 @@ public class Co2Emission implements Serializable {
 		return dataScientist;
 	}
 
-	public double getCo2EmissionKt() {
+	public BigDecimal getCo2EmissionKt() {
 		return co2EmissionKt;
 	}
 
-	public void setCo2EmissionKt(double co2EmissionKt) {
+	public void setCo2EmissionKt(BigDecimal co2EmissionKt) {
 		this.co2EmissionKt = co2EmissionKt;
+	}
+
+	public String getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
 	}
 	
 
